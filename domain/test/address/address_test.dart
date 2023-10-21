@@ -3,7 +3,7 @@ import 'package:domain/src/address/models/address.dart';
 import 'package:test/test.dart';
 
 void main() {
-  group('Address model | ', () {
+  group('Address feature | ', () {
     test('Create address with way number with letter instead middle dash > expect InvalidWayNumberException', () {
       //Arrange
       const wayType = 'Avenue';
