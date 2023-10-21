@@ -9,7 +9,7 @@ class Address {
   final String wayNumber;
   final String detail;
 
-  static final _wayNumberRegulaExpresion = RegExp(r'^\d+ - \d+$');
+  static final _wayNumberRegulaExpresion = RegExp(r'^(\d+)( - )(\d+)$');
 
   void _validateWayNumber() {
     if (!_wayNumberRegulaExpresion.hasMatch(wayNumber)) throw InvalidWayNumberException();
