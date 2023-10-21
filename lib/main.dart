@@ -1,3 +1,5 @@
+import 'package:doublev/home/app_home_page.dart';
+import 'package:doublev/shared/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -10,12 +12,14 @@ class DoubleVApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Users manager',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: Container(),
+      home: const AppHomePage(),
+      routes: buildAppRoutes(),
     );
   }
 }
