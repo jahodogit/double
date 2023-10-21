@@ -1,5 +1,5 @@
 /// Infrastructure library
 library;
 
-//export 'src/infrastructure_base.dart';
-
+export 'src/address/repositories/address_local_repository.dart' show AddressLocalRepository;
+export 'src/user/repositories/user_local_repository.dart' show UserLocalRepository;
