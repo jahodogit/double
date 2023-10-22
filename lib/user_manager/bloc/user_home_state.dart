@@ -16,3 +16,12 @@ class Success extends UserHomeState {
   @override
   List<Object?> get props => [users];
 }
+
+class Error extends UserHomeState {
+  Error({required this.error});
+
+  final String error;
+
+  @override
+  List<Object?> get props => [error];
+}

@@ -24,7 +24,7 @@ class InfrastructurePackageModule extends _i1.MicroPackageModule {
   @override
   _i2.FutureOr<void> init(_i1.GetItHelper gh) {
     final infrastructureModule = _$InfrastructureModule();
-    gh.factory<_i3.DoubleVDriftDatabase>(() => _i3.DoubleVDriftDatabase());
+    gh.singleton<_i3.DoubleVDriftDatabase>(_i3.DoubleVDriftDatabase());
     gh.factory<_i4.UserDao>(() => _i4.UserDao(gh<_i3.DoubleVDriftDatabase>()));
     gh.factory<_i5.UserLocalRepository>(
         () => infrastructureModule.userLocalRepository(gh<_i4.UserDao>()));
@@ -32,6 +32,8 @@ class InfrastructurePackageModule extends _i1.MicroPackageModule {
         () => _i7.UserLocalRepository(userDao: gh<_i4.UserDao>()));
     gh.factory<_i8.AddressDao>(
         () => _i8.AddressDao(gh<_i3.DoubleVDriftDatabase>()));
+    gh.factory<_i5.AddressLocalRepository>(() =>
+        infrastructureModule.addressLocalRepository(gh<_i8.AddressDao>()));
     gh.factory<_i6.AddressRepository>(
         () => _i9.AddressLocalRepository(addressDao: gh<_i8.AddressDao>()));
   }

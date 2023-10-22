@@ -10,7 +10,7 @@ import 'package:path_provider/path_provider.dart';
 
 part 'doublev_drift_database.g.dart';
 
-@injectable
+@singleton
 @DriftDatabase(tables: [UserEntity, AddressEntity])
 class DoubleVDriftDatabase extends _$DoubleVDriftDatabase {
   DoubleVDriftDatabase() : super(_openConnection());

@@ -5,7 +5,9 @@ import 'package:injectable/injectable.dart';
 
 @injectable
 class UserHomeCubit extends Cubit<UserHomeState> {
-  UserHomeCubit(this._userLocalRepository) : super(Loading());
+  UserHomeCubit(this._userLocalRepository) : super(Loading()) {
+    getAllUsers();
+  }
 
   final UserLocalRepository _userLocalRepository;
 
