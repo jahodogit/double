@@ -24,9 +24,7 @@ class _UserManagerHomePageState extends State<UserManagerHomePage> {
         child: BlocProvider(
           create: (context) => getIt<UserHomeCubit>(),
           child: BlocConsumer<UserHomeCubit, UserHomeState>(
-            listener: (context, state) {
-              print('Aqui estoy');
-            },
+            listener: (context, state) {},
             builder: (context, state) {
               if (state is Loading) {
                 return const CircularProgressIndicator();
