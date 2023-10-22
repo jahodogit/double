@@ -1,3 +1,5 @@
+import 'package:domain/domain.dart';
+import 'package:doublev/user_manager/widgets/address/address_form.dart';
 import 'package:flutter/material.dart';
 
 class UserFormPage extends StatefulWidget {
@@ -38,7 +40,19 @@ class _UserFormPageState extends State<UserFormPage> {
               decoration: const InputDecoration(label: Text('Fecha de nacimiento'), icon: Icon(Icons.calendar_month)),
             ),
             const SizedBox(height: 50),
-            ElevatedButton(onPressed: () {}, child: const Text('Siguiente')),
+            ElevatedButton(
+              onPressed: () {
+                try {
+                  final user = User(name: 'Jaime', lastName: 'Hoyos Dominguez', birthday: DateTime.now());
+                  Navigator.of(context).push(
+                    MaterialPageRoute<void>(builder: (BuildContext context) => AddressFormPage(user: user)),
+                  );
+                } catch (error) {
+                  print(error);
+                }
+              },
+              child: const Text('Siguiente'),
+            ),
           ],
         ),
       ),

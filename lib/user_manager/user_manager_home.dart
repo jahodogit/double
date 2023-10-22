@@ -1,8 +1,8 @@
 import 'package:doublev/dependencies/di.dart';
-import 'package:doublev/user_manager/bloc/user_home_cubit.dart';
-import 'package:doublev/user_manager/bloc/user_home_state.dart';
-import 'package:doublev/user_manager/widgets/user_form.dart';
-import 'package:doublev/user_manager/widgets/user_list.dart';
+import 'package:doublev/user_manager/bloc/user/user_home_cubit.dart';
+import 'package:doublev/user_manager/bloc/user/user_home_state.dart';
+import 'package:doublev/user_manager/widgets/user/user_form.dart';
+import 'package:doublev/user_manager/widgets/user/user_list.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
