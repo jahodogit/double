@@ -57,9 +57,17 @@ class AddressFormDetail extends StatelessWidget {
         const SizedBox(height: 50),
         ElevatedButton(
           onPressed: () {
-            final address = Address(wayType: wayType, wayNumber: wayNumber, detail: detail);
-            addressList.add(address);
-            BlocProvider.of<AddressFormCubit>(context).saveAddress();
+            try {
+              final address = Address(wayType: wayType, wayNumber: wayNumber, detail: detail);
+              addressList.add(address);
+              BlocProvider.of<AddressFormCubit>(context).saveAddress();
+            } catch (error) {
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(error.toString()),
+                ),
+              );
+            }
           },
           child: const Text('Guardar'),
         ),

@@ -16,6 +16,7 @@ class _UserFormPageState extends State<UserFormPage> {
   late String lastName;
   late DateTime birthday;
 
+  final birthdayController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -43,19 +44,25 @@ class _UserFormPageState extends State<UserFormPage> {
             ),
             const SizedBox(height: 25),
             TextFormField(
+              controller: birthdayController,
+              onTap: () => _selectDate(context),
               decoration: const InputDecoration(label: Text('Fecha de nacimiento'), icon: Icon(Icons.calendar_month)),
             ),
             const SizedBox(height: 50),
             ElevatedButton(
               onPressed: () {
                 try {
-                  final user = User(name: name, lastName: lastName, birthday: DateTime.now());
+                  final user = User(name: name, lastName: lastName, birthday: birthday);
 
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(builder: (BuildContext context) => AddressFormPage(user: user)),
                   );
                 } catch (error) {
-                  // TODO(me): Manage error
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(
+                      content: Text(error.toString()),
+                    ),
+                  );
                 }
               },
               child: const Text('Siguiente'),
@@ -64,5 +71,15 @@ class _UserFormPageState extends State<UserFormPage> {
         ),
       ),
     );
+  }
+
+  Future<void> _selectDate(BuildContext context) async {
+    final picked = await showDatePicker(context: context, initialDate: DateTime.now(), firstDate: DateTime(2015), lastDate: DateTime(2101));
+    if (picked != null) {
+      setState(() {
+        birthday = picked;
+        birthdayController.text = birthday.toString();
+      });
+    }
   }
 }
