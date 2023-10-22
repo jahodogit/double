@@ -13,23 +13,41 @@ class UserListWidget extends StatefulWidget {
 class _UserListWidgetState extends State<UserListWidget> {
   @override
   Widget build(BuildContext context) {
-    return StreamBuilder(
-      stream: widget.users,
-      builder: (_, snap) {
-        if (snap.hasData) {
-          return ListView.builder(
-            itemCount: snap.data!.length,
-            itemBuilder: (_, index) {
-              final user = snap.data!.elementAt(index);
-              return Text(user.name);
-            },
-          );
-        } else if (snap.hasError) {
-          return Text(snap.error.toString());
-        }
+    return Padding(
+      padding: const EdgeInsets.all(20),
+      child: StreamBuilder(
+        stream: widget.users,
+        builder: (_, snap) {
+          if (snap.hasData) {
+            return ListView.builder(
+              itemCount: snap.data!.length,
+              itemBuilder: (_, index) {
+                final user = snap.data!.elementAt(index);
+                return Card(
+                  child: Row(
+                    children: [
+                      Expanded(
+                        child: ListTile(
+                          title: Text('${user.name} ${user.lastName}'),
+                          subtitle: Text(user.birthday.toString()),
+                        ),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.all(20),
+                        child: Icon(Icons.navigate_next_outlined),
+                      )
+                    ],
+                  ),
+                );
+              },
+            );
+          } else if (snap.hasError) {
+            return Text(snap.error.toString());
+          }
 
-        return const Text('No se encontraron datos');
-      },
+          return const Text('No se encontraron datos');
+        },
+      ),
     );
   }
 }
