@@ -3,9 +3,11 @@ import 'package:drift/drift.dart';
 import 'package:infrastructure/src/address/entities/address_entity.dart';
 import 'package:infrastructure/src/address/traslators/address_traslator.dart';
 import 'package:infrastructure/src/shared/databases/drift_database/doublev_drift_database.dart';
+import 'package:injectable/injectable.dart';
 
 part 'address_dao.g.dart';
 
+@injectable
 @DriftAccessor(tables: [AddressEntity])
 class AddressDao extends DatabaseAccessor<DoubleVDriftDatabase> with _$AddressDaoMixin {
   AddressDao(super.attachedDatabase);

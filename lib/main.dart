@@ -1,8 +1,10 @@
+import 'package:doublev/dependencies/di.dart';
 import 'package:doublev/home/app_home_page.dart';
 import 'package:doublev/shared/routes/routes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
+  configureInjection();
   runApp(const DoubleVApp());
 }
 

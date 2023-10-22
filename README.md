@@ -1,16 +1,26 @@
-# doublev
+# Double V Partners
 
-A new Flutter project.
+## User manager app
 
-## Getting Started
+In this project I used DDD arquitecture to achive the client requirements focusing on bussines rules and using Flutter 3.10.6.
 
-This project is a starting point for a Flutter application.
+Bellow I bring details about libraries and others implemented in this project:
 
-A few resources to get you started if this is your first Flutter project:
+## Data persitence
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+    - Drift database
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## State management
+
+    - Flutter bloc
+
+## Dependency injection
+
+    - Injectable + getit
+
+## Patterns
+
+    -  Repository
+    -  Dao
+    -  Entity
+    -  Error handling

@@ -1,6 +1,8 @@
 import 'package:domain/domain.dart';
 import 'package:infrastructure/src/address/daos/address_dao.dart';
+import 'package:injectable/injectable.dart';
 
+@Injectable(as: AddressRepository)
 class AddressLocalRepository implements AddressRepository {
   AddressLocalRepository({required this.addressDao});
 

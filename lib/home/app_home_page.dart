@@ -1,7 +1,10 @@
+import 'package:doublev/user_manager/user_manager_home.dart';
 import 'package:flutter/material.dart';
 
 class AppHomePage extends StatelessWidget {
   const AppHomePage({super.key});
+
+  static const route = 'app_home';
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +19,9 @@ class AppHomePage extends StatelessWidget {
             const Text('para la ejecución de tus proyectos.'),
             const SizedBox(height: 30),
             ElevatedButton(
-              onPressed: () {},
+              onPressed: () => Navigator.of(context).pushNamed(UserManagerHomePage.route),
               child: const Text('Gestion de usuarios'),
-            )
+            ),
           ],
         ),
       ),
