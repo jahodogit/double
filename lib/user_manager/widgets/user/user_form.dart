@@ -12,6 +12,10 @@ class UserFormPage extends StatefulWidget {
 }
 
 class _UserFormPageState extends State<UserFormPage> {
+  late String name;
+  late String lastName;
+  late DateTime birthday;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -29,10 +33,12 @@ class _UserFormPageState extends State<UserFormPage> {
             ),
             const SizedBox(height: 25),
             TextFormField(
+              onChanged: (value) => name = value,
               decoration: const InputDecoration(label: Text('Nombre'), icon: Icon(Icons.person)),
             ),
             const SizedBox(height: 25),
             TextFormField(
+              onChanged: (value) => lastName = value,
               decoration: const InputDecoration(label: Text('Apellidos'), icon: Icon(Icons.details)),
             ),
             const SizedBox(height: 25),
@@ -43,7 +49,8 @@ class _UserFormPageState extends State<UserFormPage> {
             ElevatedButton(
               onPressed: () {
                 try {
-                  final user = User(name: 'Jaime', lastName: 'Hoyos Dominguez', birthday: DateTime.now());
+                  final user = User(name: name, lastName: lastName, birthday: DateTime.now());
+
                   Navigator.of(context).push(
                     MaterialPageRoute<void>(builder: (BuildContext context) => AddressFormPage(user: user)),
                   );

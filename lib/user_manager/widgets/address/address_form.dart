@@ -38,12 +38,25 @@ class _AddressFormPageState extends State<AddressFormPage> {
               child: BlocConsumer<AddressFormCubit, AddressFormState>(
                 listener: (context, state) {
                   if (state is Success) {
-                    Navigator.of(context).pushReplacementNamed(UserManagerHomePage.route);
+                    Navigator.of(context).pushNamedAndRemoveUntil(UserManagerHomePage.route, (Route<dynamic> route) => false);
                   }
                 },
                 builder: (context, state) {
                   if (state is Initial) {
-                    return AddressList(addressList: address);
+                    return Column(
+                      children: [
+                        AddressList(addressList: address),
+                        if (address.isNotEmpty)
+                          ElevatedButton(
+                            onPressed: () {
+                              BlocProvider.of<AddressFormCubit>(context).saveUserData(widget.user, address);
+                            },
+                            child: const Text('Guardar usuario'),
+                          )
+                        else
+                          const SizedBox(),
+                      ],
+                    );
                   } else if (state is AddingAddress) {
                     return AddressFormDetail(addressList: address);
                   } else if (state is Saving) {
